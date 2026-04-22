@@ -27,7 +27,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.get("/", (req, res) => {
-    res.send("Admin service is running");
+    res.send("Worker service is running");
 });
 const PORT = process.env.PORT;
 initDB().then(() => {
