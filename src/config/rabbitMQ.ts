@@ -8,11 +8,11 @@ export async function initRabbitMQ() {
   channel = await conn.createChannel();
   if (channel) {
     console.log("RabbitMQ channel created successfully");
+    await channel.assertExchange("song.events", "direct", {
+      durable: true,
+    });
     await startSongDeletedConsumer();
   }
-  await channel.assertExchange("song.events", "direct", {
-    durable: true,
-  });
 }
 
 export const getChannel = () => channel;
