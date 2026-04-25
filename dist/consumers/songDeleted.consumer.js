@@ -1,7 +1,5 @@
-import { getChannel } from "../config/rabbitMQ.js";
 import { cleanupSong } from "../jobs/cleanupSong.job.js";
-export const startSongDeletedConsumer = async () => {
-    const channel = getChannel();
+export const startSongDeletedConsumer = async (channel) => {
     if (!channel)
         throw new Error("RabbitMQ channel not initialized");
     const queue = "song.cleanup.queue";

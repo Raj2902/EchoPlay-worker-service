@@ -9,8 +9,7 @@ export async function initRabbitMQ() {
         await channel.assertExchange("song.events", "direct", {
             durable: true,
         });
-        await startSongDeletedConsumer();
+        await startSongDeletedConsumer(channel);
     }
 }
-export const getChannel = () => channel;
 //# sourceMappingURL=rabbitMQ.js.map
